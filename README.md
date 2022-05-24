@@ -435,7 +435,7 @@ rt_hashtags <- rt %>%
   filter(n > 5)
 
 rt_hashtags %>% 
-  filter(hashtags != "#ICA22") %>%
+  filter(hashtags != "#ica22") %>%
   mutate(hashtags = forcats::fct_reorder(hashtags, n)) %>% 
   ggplot(aes(hashtags, n)) +
   geom_bar(stat = "identity", alpha = .7) +
@@ -472,7 +472,7 @@ gg_bigram <- rt %>%
   tidytext::unnest_tokens(bigram, text, token = "ngrams", n = 2) %>% 
   separate(bigram, c("word1", "word2"), sep = " ") %>% 
   ## remove the hashtag and count bigrams 
-  filter(word1 != "ICA22", word2 != "ICA22") %>%
+  filter(word1 != "ica22", word2 != "ica22") %>%
   count(word1, word2, sort = T) %>% 
   ## select first 50
   slice(1:50) %>% 
